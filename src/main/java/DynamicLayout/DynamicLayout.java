@@ -15,7 +15,6 @@ public class DynamicLayout implements LayoutManager2 {
     private ArrayList<Byte> percentsHeig = new ArrayList();
     private ArrayList<Byte> percentsPositionsX = new ArrayList();
     private ArrayList<Byte> percentsPositionsY = new ArrayList();
-    private ArrayList<Byte> percentsFonts = new ArrayList();
 
     int width;
     int height;
@@ -64,7 +63,6 @@ public class DynamicLayout implements LayoutManager2 {
             this.percentsHeig.add((byte) this.getPercent(this.height, comp.getHeight()));
             this.percentsPositionsX.add((byte) this.getPercent(this.width, (int)comp.getLocation().getX()));
             this.percentsPositionsY.add((byte) this.getPercent(this.height, (int)comp.getLocation().getY()));
-            this.percentsFonts.add((byte) this.getPercent(comp.getWidth(), comp.getFont().getSize()));
         }
     }
 
@@ -83,16 +81,7 @@ public class DynamicLayout implements LayoutManager2 {
             int heightFinal = this.geraTamanhoHeig(height, cont);
             c.setBounds(this.geraPositionX(width, cont), this.geraPositionY(height, cont), widthFinal, heightFinal);
 
-            if(c.getFont() != null){
-                Font font = c.getFont();
-                int tamanhoFontFinal = this.geraTamanhoFont(widthFinal, cont);
-                if(tamanhoFontFinal >= (heightFinal-8)){
-                    tamanhoFontFinal = heightFinal-13;
-                }
-                c.setFont(new Font(font.getFontName(),font.getStyle(), tamanhoFontFinal));
-
-                font= null;
-            }
+           
         }
 
     }
@@ -118,9 +107,6 @@ public class DynamicLayout implements LayoutManager2 {
         return this.percentsHeig.get(cont) * tamPai / 100;
     }
 
-    private int geraTamanhoFont(int tamPai, int cont){
-        return this.percentsFonts.get(cont) * tamPai / 100;
-    }
 
     public Dimension preferredLayoutSize(Container parent) {
         return null;
