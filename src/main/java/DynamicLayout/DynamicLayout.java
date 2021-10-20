@@ -20,8 +20,8 @@ public class DynamicLayout implements LayoutManager2 {
     int height;
 
     public DynamicLayout(int width, int height) {
-        this.width = width;
-        this.height = height;
+        this.width = width-5;
+        this.height = height-35;
     }
 
     public void addLayoutComponent(Component comp, Object constraints) {
