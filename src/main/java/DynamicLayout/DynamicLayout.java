@@ -21,7 +21,7 @@ public class DynamicLayout implements LayoutManager2 {
     int height;
 
     public DynamicLayout(int width, int height) {
-        this.width = width-5;
+        this.width = width-4;
         this.height = height-35;
     }
 
